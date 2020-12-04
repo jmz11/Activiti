@@ -16,6 +16,9 @@ jobs:
       --allow-empty\ngit tag -fa v$(cat VERSION) -m \"Release version $(cat VERSION)\"\ngit
       push -f -q https://${GITHUB_TOKEN}@github.com/Activiti/Activiti.git v$(cat VERSION)\nmvn
       clean deploy -DskipTests\nexport VERSION=$(cat VERSION)| make updatebot/push-version\n"
+  - name: Nondex
+    stage: nondex
+    script: ./nondex.sh
 notifications:
   slack:
     secure: RZ8ULqQgwJnjm88AaleamwqLMposxVytXFjagFtgQzs/zqCSXEnahFV3QVvJACZUdRrReueToDTWswkHuB74Tg0MbcpixDCm6voW4iPJqbnlf+wDz7eF4JFtxS311huXYfv7EA9/lMSCXiOCbsDJZFx+Cb1OmsZlQaJ+g1v24vY=
