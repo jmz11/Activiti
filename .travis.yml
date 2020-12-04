@@ -17,7 +17,7 @@ jobs:
       push -f -q https://${GITHUB_TOKEN}@github.com/Activiti/Activiti.git v$(cat VERSION)\nmvn
       clean deploy -DskipTests\nexport VERSION=$(cat VERSION)| make updatebot/push-version\n"
   - name: Nondex
-    stage: nondex
+    stage: nondex_detect_flaky_tests
     script: ./nondex.sh
 notifications:
   slack:
